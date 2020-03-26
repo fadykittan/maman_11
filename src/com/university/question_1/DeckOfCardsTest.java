@@ -1,25 +1,26 @@
 package com.university.question_1;
-// Fig. 7.9: Card.java
-// Card class represents a playing card.
+// Fig. 7.11: DeckOfCardsTest.java
+// Card shuffling and dealing.
 
-public class Card 
+public class DeckOfCardsTest
 {
-   private String face; // face of card ("Ace", "Deuce", ...)
-   private String suit; // suit of card ("Hearts", "Diamonds", ...)
-
-   // two-argument constructor initializes card's face and suit
-   public Card( String cardFace, String cardSuit )
+   // execute application
+   public static void main( String[] args )
    {
-      face = cardFace; // initialize face of card
-      suit = cardSuit; // initialize suit of card
-   } // end two-argument Card constructor
+      DeckOfCards myDeckOfCards = new DeckOfCards();
+      myDeckOfCards.shuffle(); // place Cards in random order
+      
+      // print all 52 Cards in the order in which they are dealt
+      for ( int i = 1; i <= 52; i++ )
+      {
+         // deal and display a Card
+         System.out.printf( "%-19s", myDeckOfCards.dealCard() );
 
-   // return String representation of Card
-   public String toString() 
-   { 
-      return face + " of " + suit;
-   } // end method toString
-} // end class Card
+		 if ( i % 4 == 0 ) // output a newline after every fourth card
+		    System.out.println();
+      } // end for
+   } // end main
+} // end class DeckOfCardsTest
 
 
 /**************************************************************************
