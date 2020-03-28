@@ -11,10 +11,12 @@ public class DisplayGamePanel extends JPanel {
         int width = getWidth();
         int height = getHeight();
         CardPanel card = new CardPanel();
+        card.setLocation((int) (0.1 * width), (int) (0.7 * height));
+        card.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(card);
-        card.paintComponent(g);
-        g.setColor(Color.GRAY);
-        g.fill3DRect( (int) (0.1 * width), (int) (0.7 * height), 70, 100, true);
+//        card.paintComponent(g);
+//        g.setColor(Color.GRAY);
+//        g.fill3DRect( (int) (0.1 * width), (int) (0.7 * height), 70, 100, true);
 
 
     }

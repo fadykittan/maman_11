@@ -12,13 +12,12 @@ public class DisplayGame {
 
         JFrame game = new JFrame();
         DisplayGamePanel displayGamePanel = new DisplayGamePanel();
-//        JPanel j = new JPanel();
         game.add(displayGamePanel);
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        game.setSize(500 , 500);
+        game.setSize(1000 , 1000);
         game.setVisible(true);
-        int x = JOptionPane.showConfirmDialog(game, "Do you want to play again?");
-        System.out.println(x);
+//        int x = JOptionPane.showConfirmDialog(game, "Do you want to play again?");
+//        System.out.println(x);
 
     }
 
