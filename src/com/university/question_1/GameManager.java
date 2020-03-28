@@ -1,23 +1,42 @@
 package com.university.question_1;
 
 public class GameManager {
-
+    private ComputerPlayer comPlayer;
+    private HumanPlayer humPlayer;
+    private DeckOfCards deck;
 
     public void init (){
         //create computer player
-        ComputerPlayer comPlayer = new ComputerPlayer("Dizel");
+        this.comPlayer = new ComputerPlayer("Dizel");
 
         //create single player
-        HumanPlayer humPlayer = new HumanPlayer("Awni");
-        //get deck of cards
+       this.humPlayer = new HumanPlayer("Awni");
+
+        //create deck of cards
+        this.deck = new DeckOfCards();
 
         //random the cards
-        //give 2 cards for each player
+        deck.shuffle();
 
+        //give 2 cards for each player
+        Card c = deck.dealCard();
+        comPlayer.takeCard(c);
+        c = deck.dealCard();
+        comPlayer.takeCard(c);
+
+        c = deck.dealCard();
+        humPlayer.takeCard(c);
+        c = deck.dealCard();
+        humPlayer.takeCard(c);
     }
 
     public void play(){
         //for loop
+        boolean singlePlayer = true ;
+        while (singlePlayer == true) {
+          Card h = deck.dealCard();
+          this.humPlayer.takeCard(h);
+        }
         //display cards for each player
         //ask single player if need more cards
             //give one card

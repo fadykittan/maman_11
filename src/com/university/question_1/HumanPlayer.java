@@ -8,12 +8,12 @@ public class HumanPlayer extends Player {
 
 
     protected void updateTotalValue() {
-        for (MyCard myCard : myCardList){
-            _totalValue += myCard.getValue();
+        for (Card card : cardList){
+            _totalValue += card.getValue();
         }
 
-        for (MyCard myCard : ASMyCardList){
-            _totalValue += myCard.getMinValue();
+        for (Card card : ASCardList){
+            _totalValue += card.getMinValue();
         }
     }
 }

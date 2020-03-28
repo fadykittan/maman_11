@@ -1,38 +1,62 @@
 package com.university.question_1;
-// Fig. 7.9: Card.java
-// Card class represents a playing card.
 
-public class Card 
-{
-   private String face; // face of card ("Ace", "Deuce", ...)
-   private String suit; // suit of card ("Hearts", "Diamonds", ...)
+public class Card {
 
-   // two-argument constructor initializes card's face and suit
-   public Card( String cardFace, String cardSuit )
-   {
-      face = cardFace; // initialize face of card
-      suit = cardSuit; // initialize suit of card
-   } // end two-argument Card constructor
+    private String displayName;
+    private int value;
+    private boolean isAS;
+    private final static int AS_VALUE_1 = 1;
+    private final static int AS_VALUE_2 = 11;
 
-   // return String representation of Card
-   public String toString() 
-   { 
-      return face + " of " + suit;
-   } // end method toString
-} // end class Card
+    public Card(String displayName, int value, boolean isAS) {
+        this.displayName = displayName;
+        this.value = value;
+        this.isAS = isAS;
+    }
+
+    public String getDisplayName() {
+        return new String(displayName);
+    }
+
+//    public int[] getValue() {
+//        int[] valueArray;
+//        if (this.isAS) {
+//            valueArray = new int[2];
+//            valueArray[0] = 1;
+//            valueArray[1] = 11;
+//        } else {
+//            valueArray = new int[1];
+//            valueArray[0] = this.value;
+//        }
+//        return valueArray;
+//    }
 
 
-/**************************************************************************
- * (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
- * Pearson Education, Inc. All Rights Reserved.                           *
- *                                                                        *
- * DISCLAIMER: The authors and publisher of this book have used their     *
- * best efforts in preparing the book. These efforts include the          *
- * development, research, and testing of the theories and programs        *
- * to determine their effectiveness. The authors and publisher make       *
- * no warranty of any kind, expressed or implied, with regard to these    *
- * programs or to the documentation contained in these books. The authors *
- * and publisher shall not be liable in any event for incidental or       *
- * consequential damages in connection with, or arising out of, the       *
- * furnishing, performance, or use of these programs.                     *
- *************************************************************************/
+    public int getValue() {
+        if(this.isAS){
+            return 0;
+        }
+        return value;
+    }
+
+    public boolean isAS() {
+        return isAS;
+    }
+
+    public int getMaxValue() {
+        if (this.isAS) {
+            return AS_VALUE_2;
+        } else {
+            return this.value;
+        }
+    }
+
+    public int getMinValue() {
+        if (this.isAS) {
+            return AS_VALUE_1;
+        } else {
+            return this.value;
+        }
+    }
+
+}
