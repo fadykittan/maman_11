@@ -16,11 +16,12 @@ public class CardPanel extends JPanel {
         this.setBackground(Color.GRAY);
         this.setSize(CARD_WIDTH, CARD_HEIGHT);
         JLabel label = new JLabel("ACE");
-//        g.setColor(Color.WHITE);
-//        label.setVerticalAlignment(JLabel.CENTER);
-//        label.setHorizontalAlignment(JLabel.CENTER);
+//        this.setLayout(new FlowLayout());
+        g.setColor(Color.WHITE);
+        label.setVerticalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(new Font("Aril", Font.BOLD, 24));
-//        label.setVisible(true);
+       label.setVisible(true);
         this.add(label);
 
 //        g.drawString("ACE", 10,50);

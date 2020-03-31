@@ -1,5 +1,7 @@
 package com.university.question_1;
 
+import java.awt.*;
+
 public class Card {
 
     private String displayName;
@@ -59,4 +61,16 @@ public class Card {
         }
     }
 
+    public void draw(Graphics g, Dimension d, Point p) {
+        g.setColor(Color.BLUE);
+        g.fillRect((int)p.getX() + 1, (int)p.getY() + 1,
+                (int)d.getWidth() - 2, (int)d.getHeight()-2);
+        g.setFont(new Font("arial", Font.BOLD, 20));
+
+        g.setColor(Color.WHITE);
+        g.drawString("" + displayName, (int)(p.getX() + d.getWidth() / 2 - 5),
+                (int)(p.getY() + d.getWidth() / 2 + 5));
+
+    }
 }
+
