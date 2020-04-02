@@ -7,13 +7,13 @@ public class HumanPlayer extends Player {
     }
 
 
-    protected void updateTotalValue() {
-        for (Card card : cardList){
-            _totalValue += card.getValue();
-        }
-
-        for (Card card : ASCardList){
-            _totalValue += card.getMinValue();
-        }
-    }
+//    protected void updateTotalValue() {
+//        for (Card card : cardList){
+//            _totalValue += card.getValue();
+//        }
+//
+//        for (Card card : ASCardList){
+//            _totalValue += card.getMinValue();
+//        }
+//    }
 }

@@ -13,21 +13,37 @@ public class Game {
 
         JFrame frame = new JFrame("Slides");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 400);
-        GameManager gameManager = new GameManager();
-        GameGUI gui = new GameGUI(gameManager);
+        frame.setSize(1000, 1000);
+        GameGUI gui = new GameGUI();
         frame.add(gui);
         frame.setVisible(true);
         gui.prepareGame();
 
-        int answer = JOptionPane.showConfirmDialog(null, "Do you want more cards?");
+        int answer = gui.isPlayAnotherRound();
         while(answer == YES) {
-            gui.giveEachPlayerCard();
-            answer = JOptionPane.showConfirmDialog(null, "Do you want more cards?");
+
+            System.out.println("=============== NEW ROUND ===============");
+           boolean ask = gui.askPlayerForMoreCard();
+           if(ask){
+               gui.givePlayerCard();
+           }
+
+           ask = gui.askComputerForMoreCard();
+           if(ask) {
+               gui.giveComputerCard();
+           }
+
+            answer = gui.isPlayAnotherRound();
 
         }
 
-        gui.displayTheWinnerName();
+
+
+        if(answer == NO){
+            gui.displayTheWinnerName();
+        }
+
+
 
 //        JFrame game = new JFrame();
 //       DisplayGamePanel displayGamePanel = new DisplayGamePanel();
