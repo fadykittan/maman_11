@@ -17,47 +17,34 @@ public class Game {
         GameGUI gui = new GameGUI();
         frame.add(gui);
         frame.setVisible(true);
-        gui.prepareGame();
 
-        int answer = gui.isPlayAnotherRound();
-        while(answer == YES) {
+        do {
+            gui.resetGame();
+            gui.prepareGame();
 
-            System.out.println("=============== NEW ROUND ===============");
-           boolean ask = gui.askPlayerForMoreCard();
-           if(ask){
-               gui.givePlayerCard();
-           }
+            int answer = gui.isPlayAnotherRound();
+            while (answer == YES) {
 
-           ask = gui.askComputerForMoreCard();
-           if(ask) {
-               gui.giveComputerCard();
-           }
+                boolean ask = gui.askPlayerForMoreCard();
+                if (ask) {
+                    gui.givePlayerCard();
+                }
 
-            answer = gui.isPlayAnotherRound();
+                ask = gui.askComputerForMoreCard();
+                if (ask) {
+                    gui.giveComputerCard();
+                }
 
-        }
+                answer = gui.isPlayAnotherRound();
 
-
-
-        if(answer == NO){
-            gui.displayTheWinnerName();
-        }
+            }
 
 
+            if (answer == NO) {
+                gui.displayTheWinnerName();
+            }
 
-//        JFrame game = new JFrame();
-//       DisplayGamePanel displayGamePanel = new DisplayGamePanel();
-//       game.add(displayGamePanel);
-//        CardPanel card = new CardPanel();
-//      card.setLocation((int) (0.1 * width), (int) (0.7 * height));
-//        card.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        game.add(card);
-//        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        game.setSize(1000 , 1000);
-//        game.setVisible(true);
-//      int x = JOptionPane.showConfirmDialog(game, "Do you want to play again?");
-//       System.out.println(x);
-
+        } while (JOptionPane.showConfirmDialog(null, "Do you want to play again?") == YES);
 
     }
 

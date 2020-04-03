@@ -20,22 +20,9 @@ public class Card {
         return new String(displayName);
     }
 
-//    public int[] getValue() {
-//        int[] valueArray;
-//        if (this.isAS) {
-//            valueArray = new int[2];
-//            valueArray[0] = 1;
-//            valueArray[1] = 11;
-//        } else {
-//            valueArray = new int[1];
-//            valueArray[0] = this.value;
-//        }
-//        return valueArray;
-//    }
-
 
     public int getValue() {
-        if(this.isAS){
+        if (this.isAS) {
             return 0;
         }
         return value;
@@ -63,16 +50,14 @@ public class Card {
 
     public void draw(Graphics g, Dimension d, Point p) {
         g.setColor(Color.BLUE);
-//        g.fillRect((int)p.getX() + 1, (int)p.getY() + 1,
-//                (int)d.getWidth() - 2, (int)d.getHeight()-2);
 
-        g.fillRect((int)p.getX(), (int)p.getY(),
-                (int)d.getWidth(), (int)d.getHeight());
+        g.fillRect((int) p.getX(), (int) p.getY(),
+                (int) d.getWidth(), (int) d.getHeight());
         g.setFont(new Font("arial", Font.BOLD, 20));
 
         g.setColor(Color.WHITE);
-        g.drawString("" + (isAS? "A" : value), (int)(p.getX() + d.getWidth() / 2 - 5),
-                (int)(p.getY() + d.getWidth() / 2 + 5));
+        g.drawString("" + (isAS ? "A" : value), (int) (p.getX() + d.getWidth() / 2 - 5),
+                (int) (p.getY() + d.getWidth() / 2 + 5));
 
     }
 }

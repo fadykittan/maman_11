@@ -12,64 +12,63 @@ public class GameGUI extends JPanel {
     private static int CANCEL = 2;
 
     private GameManager gameManager;
-    private boolean win;
     private final int MARGIN = 10;
     private final int CARD_SIZE = 50;
-    private final Point COMPUTER_FIRST_CARD_POSITION = new Point(10,50);
-    private final Point PLAYER_FIRST_CARD_POSITION = new Point(10,150);
+    private final Point COMPUTER_FIRST_CARD_POSITION = new Point(10, 75);
+    private final Point PLAYER_FIRST_CARD_POSITION = new Point(10, 275);
 
 
     int lastPlayerAnswer = YES;
 
 
-
     public GameGUI() {
         this.gameManager = new GameManager();
-  //      win = game.gameOver();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         ArrayList<Card> playerCards = gameManager.getHumanPlayerCards();
-
-        draw(g, new Dimension(CARD_SIZE, CARD_SIZE), new Point(PLAYER_FIRST_CARD_POSITION), playerCards);
-
         ArrayList<Card> computerCards = gameManager.getComputerCards();
+
+        g.setFont(new Font("arial", Font.BOLD, 20));
+        g.setColor(Color.BLACK);
+        g.drawString("Computer's Cards:", 10, 50);
 
         draw(g, new Dimension(CARD_SIZE, CARD_SIZE), new Point(COMPUTER_FIRST_CARD_POSITION), computerCards);
 
+        g.setFont(new Font("arial", Font.BOLD, 20));
+        g.setColor(Color.BLACK);
+        g.drawString("Your Cards:", 10, 250);
+
+        draw(g, new Dimension(CARD_SIZE, CARD_SIZE), new Point(PLAYER_FIRST_CARD_POSITION), playerCards);
+
     }
 
-//    public void makeMove(int row, int col) {
-//        game.move(row, col);
-//        repaint();
-//    }
-
-    public void prepareGame(){
+    public void prepareGame() {
 
         //give each player 2 cards
         gameManager.init();
     }
 
 
-    public void displayTheWinnerName(){
+    public void displayTheWinnerName() {
         Player player = gameManager.getWinnerPlayer();
 
         String name;
-        if(player == null){
+        if (player == null) {
             name = "No Winner";
         } else {
             name = player.getName();
-            name = "the winner is "  + name;
+            name = "the winner is " + name;
 
         }
         JOptionPane.showMessageDialog(null, name);
     }
 
-    public int isPlayAnotherRound(){
+    public int isPlayAnotherRound() {
         boolean computerAnswer = askComputerForMoreCard();
-        if(lastPlayerAnswer == YES || computerAnswer){
+        if (lastPlayerAnswer == YES || computerAnswer) {
             return YES;
         }
         return lastPlayerAnswer;
@@ -77,7 +76,7 @@ public class GameGUI extends JPanel {
     }
 
     public boolean askPlayerForMoreCard() {
-        if(lastPlayerAnswer == YES) {
+        if (lastPlayerAnswer == YES) {
             int ans = JOptionPane.showConfirmDialog(null, "Do you want more cards?");
 
             lastPlayerAnswer = ans;
@@ -91,56 +90,34 @@ public class GameGUI extends JPanel {
         return false;
     }
 
-    public void givePlayerCard(){
+    public void givePlayerCard() {
         gameManager.givePlayerCard();
         repaint();
     }
 
-    public boolean askComputerForMoreCard(){
+    public boolean askComputerForMoreCard() {
         return gameManager.askComputerForMoreCard();
     }
 
-    public void giveComputerCard(){
+    public void giveComputerCard() {
         gameManager.giveComputerCard();
+        repaint();
     }
 
     public void draw(Graphics g, Dimension d, Point p, ArrayList<Card> playercards) {
 
-        for(Card c : playercards){
+        for (Card c : playercards) {
             c.draw(g, d, p);
             p.x = p.x + CARD_SIZE + MARGIN;
         }
 
-//        int cellWidth = d.getWidth() / SIZE;
-//
-//        int x, y;
-//        x = (int)p.getX();
-//        y = (int)p.getY();
-//
-//        for(int i = 0; i < board.length; i++, y += cellWidth)
-//        {
-//            x = (int)p.getX();
-//            for(int j = 0; j < board.length; j++, x += cellWidth)
-//                board[i][j].draw(g, new Dimension(x, y, cellWidth, cellWidth));
-//        }
     }
 
 
-//    public void paintComponent(Graphics g){
-//        super.paintComponent(g);
-//        int width = getWidth();
-//        int height = getHeight();
-//        CardPanel card = new CardPanel();
-//        card.setLocation((int) (0.1 * width), (int) (0.7 * height));
-//        card.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        this.add(card);
-//       card.paintComponent(g);
-//      g.setColor(Color.GRAY);
-//      g.fill3DRect( (int) (0.1 * width), (int) (0.7 * height), 70, 100, true);
-
-
-   // }
-
-
+    public void resetGame() {
+        gameManager.init();
+        lastPlayerAnswer = YES;
+        repaint();
+    }
 
 }
