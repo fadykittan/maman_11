@@ -55,8 +55,8 @@ public class GameManager {
     }
 
     public Player getWinnerPlayer() {
-        int playerCardsValue = humPlayer.getTotalValue(); //23
-        int computerCardsValue = comPlayer.getTotalValue(); //19
+        int playerCardsValue = humPlayer.getTotalValue();
+        int computerCardsValue = comPlayer.getTotalValue();
 
         if (playerCardsValue > computerCardsValue && playerCardsValue <= 21) {
             return humPlayer;
@@ -83,6 +83,14 @@ public class GameManager {
 
     public ArrayList<Card> getComputerCards() {
         return comPlayer.getAllCards();
+    }
+
+    public int getPlayerTotalValue() {
+        return humPlayer.getTotalValue();
+    }
+
+    public int getComputerTotalValue() {
+        return comPlayer.getTotalValue();
     }
 
 }

@@ -63,7 +63,12 @@ public class GameGUI extends JPanel {
             name = "the winner is " + name;
 
         }
-        JOptionPane.showMessageDialog(null, name);
+
+        String message = "\nComputer total cards value: " + gameManager.getComputerTotalValue() + "\n";
+        message = message + "Your total cards value: " + gameManager.getPlayerTotalValue() + "\n";
+        message = message + "\n" + name;
+
+        JOptionPane.showMessageDialog(null, message);
     }
 
     public int isPlayAnotherRound() {
