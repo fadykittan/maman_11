@@ -1,7 +1,5 @@
 package com.university.question_2;
 
-import javafx.scene.chart.BarChart;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

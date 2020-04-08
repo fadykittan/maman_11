@@ -56,7 +56,7 @@ public class Card {
         g.setFont(new Font("arial", Font.BOLD, 20));
 
         g.setColor(Color.WHITE);
-        g.drawString("" + (isAS ? "A" : value), (int) (p.getX() + d.getWidth() / 2 - 5),
+        g.drawString(displayName, (int) (p.getX() + d.getWidth() / 2 - 5),
                 (int) (p.getY() + d.getWidth() / 2 + 5));
 
     }

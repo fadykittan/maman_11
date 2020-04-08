@@ -13,8 +13,8 @@ public class DeckOfCards {
 
     // constructor fills deck of Cards
     public DeckOfCards() {
-        String[] faces = {"Ace", "Deuce", "Three", "Four", "Five", "Six",
-                "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+        String[] faces = {"A", "2", "3", "4", "5", "6",
+                "7", "8", "9", "10", "J", "Q", "K"};
         int[] values = {0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
 
         deck = new ArrayList<Card>(); // create array of Card objects
