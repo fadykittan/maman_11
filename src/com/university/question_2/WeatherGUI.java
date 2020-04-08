@@ -8,13 +8,17 @@ public class WeatherGUI extends JPanel {
 
 
     private ArrayList<Integer> chartData;
-    private final int MARGIN = 30;
+    private final int MARGIN = 50;
     private final int BAR_WIDTH = 30;
     private final int SPACE_BETWEEN_BARS = 20;
+    private final int LINE_LENGTH = 5;
+    private final int Y_UNIT = 5;
+    private final int Y_MAX_VALUE = 60;
     private Point pointZero;
     private int maxBarHeight;
     private int minBarHeight;
     private double scaleFactor;
+    private int YUnitSize;
 
 
     public void paintComponent(Graphics g) {
@@ -26,15 +30,10 @@ public class WeatherGUI extends JPanel {
         chartSize.width = this.getSize().width - 2 * MARGIN;
         chartSize.height = this.getSize().height - 2 * MARGIN;
 
+        this.YUnitSize = chartSize.height / (Y_MAX_VALUE/ Y_UNIT);
 
         this.drawAxis(g, pointZero, chartSize);
 
-        chartData = new ArrayList<>();
-        chartData.add(10);
-        chartData.add(20);
-        chartData.add(70);
-
-        this.findMaxMinBarHeight();
         this.findScaleFactor(chartSize);
 
 
@@ -67,8 +66,10 @@ public class WeatherGUI extends JPanel {
                 if (WeatherData.isYearInRange(year)) {
                     return year;
                 }
+                //todo else error print range year
             } catch (Exception e) {
                 System.out.println("failed when trying to convert this '" + input + "' into number");
+                //todo print only number note on screen " enter only number"
             }
 
         }
@@ -95,6 +96,16 @@ public class WeatherGUI extends JPanel {
         // draw Y axis
         g.drawLine(pointZero.x, pointZero.y, pointZero.x, pointZero.y - d.height);
 
+        // max temp is 60, 60 / 5 = 12
+        // divide the Y into 12
+        int spaceY = this.YUnitSize;
+        int v = this.Y_UNIT;
+        for(int i = spaceY; i < d.height; i += spaceY){
+            g.drawLine(pointZero.x - this.LINE_LENGTH, pointZero.y - i, pointZero.x + this.LINE_LENGTH, pointZero.y - i);
+            g.drawString("" + v, pointZero.x - 4 * this.LINE_LENGTH, pointZero.y - i + this.LINE_LENGTH);
+            v = v + 5;
+        }
+
     }
 
 
@@ -112,7 +123,8 @@ public class WeatherGUI extends JPanel {
                 g.setColor(Color.GRAY);
             }
 
-            int barHeight = (int) (value * scaleFactor);
+//            int barHeight = (int) (value * scaleFactor);
+            int barHeight = (int) (((double) value / (double) this.Y_UNIT) * this.YUnitSize);
 
             g.fillRect(nextBarPosition, pointZero.y - barHeight, BAR_WIDTH, barHeight);
             nextBarPosition += SPACE_BETWEEN_BARS + BAR_WIDTH;

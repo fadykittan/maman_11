@@ -7,8 +7,8 @@ import java.util.Map;
 public class WeatherData {
 
     public static Map<Integer, ArrayList<Integer>> chartData = new HashMap<>();
-    private static int oldestYear = 2015;
-    private static int newestYear = 2016;
+    private static int oldestYear;
+    private static int newestYear;
 
     public static void prepareData() {
 
