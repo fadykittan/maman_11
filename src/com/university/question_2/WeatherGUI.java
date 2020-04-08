@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class WeatherGUI extends JPanel {
 
 
-    private ArrayList<Integer> chartData;
+    private ArrayList<Integer> chartData = new ArrayList<>();
     private final int MARGIN = 50;
     private final int BAR_WIDTH = 30;
     private final int SPACE_BETWEEN_BARS = 20;
@@ -54,7 +54,7 @@ public class WeatherGUI extends JPanel {
             input = JOptionPane.showInputDialog("Please enter a year between " + WeatherData.getOldestYear() + " and " + WeatherData.getNewestYear());
 
             // check if the user pressed Enter
-            if (input.equals("")) {
+            if (input == null || input.equals("")) {
                 return Weather.CANCEL;
             }
 
@@ -113,6 +113,7 @@ public class WeatherGUI extends JPanel {
 
         int nextBarPosition = pointZero.x + SPACE_BETWEEN_BARS;
 
+        int month = 1;
         for (Integer value : chartData) {
 
             if (value == maxBarHeight) {
@@ -126,8 +127,13 @@ public class WeatherGUI extends JPanel {
 //            int barHeight = (int) (value * scaleFactor);
             int barHeight = (int) (((double) value / (double) this.Y_UNIT) * this.YUnitSize);
 
-            g.fillRect(nextBarPosition, pointZero.y - barHeight, BAR_WIDTH, barHeight);
-            nextBarPosition += SPACE_BETWEEN_BARS + BAR_WIDTH;
+            g.fillRect(nextBarPosition, pointZero.y - barHeight, this.BAR_WIDTH, barHeight);
+
+            g.setColor(Color.BLACK);
+            g.drawString("" + month, nextBarPosition + this.BAR_WIDTH / 2, pointZero.y + this.YUnitSize / 2);
+
+            nextBarPosition += this.SPACE_BETWEEN_BARS + this.BAR_WIDTH;
+            month++;
         }
     }
 

@@ -12,8 +12,15 @@ public class WeatherData {
 
     public static void prepareData() {
 
-        int[] temperature = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-        int[] years = {2015, 2016};
+        int[] temperature = {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+                9, 10, 15, 20, 23, 25, 30, 35, 25, 15, 12, 8,
+                21, 23, 26, 31, 35, 37, 40, 50, 36, 33, 28, 23,
+                20, 22, 25, 30, 34, 37, 40, 45, 36, 31, 26, 21,
+                18, 20, 22, 27, 32, 35, 37, 40, 35, 32, 26, 20
+        };
+
+        int[] years = {2015, 2016, 2017, 2018, 2019};
 
         findMaxMinYear(years);
 
@@ -21,14 +28,13 @@ public class WeatherData {
 
             ArrayList<Integer> yearData = new ArrayList<>();
 
-            for (int t = y * 12; t < 12; t++) {
+            for (int t = y * 12; t < (y + 1) * 12; t++) {
                 yearData.add(temperature[t]);
             }
 
             chartData.put(years[y], yearData);
 
         }
-
 
     }
 
