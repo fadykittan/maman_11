@@ -52,7 +52,7 @@ public class WeatherGUI extends JPanel {
             int year;
 
             // take input
-            input = JOptionPane.showInputDialog("Please enter a year between " + WeatherData.oldestYear + " and " + WeatherData.newestYear);
+            input = JOptionPane.showInputDialog("Please enter a year between " + WeatherData.getOldestYear() + " and " + WeatherData.getNewestYear());
 
             // check if the user pressed Enter
             if (input.equals("")) {

@@ -16,17 +16,17 @@ public class Weather {
         WeatherGUI gui = new WeatherGUI();
         frame.add(gui);
         frame.setVisible(true);
-//        WeatherData.prepareData();
+        WeatherData.prepareData();
 
 
-//        int year = gui.askForYearToDisplay();
-//
-//        while (year != CANCEL) {
-//
-//            gui.getYearData(year);
-//            gui.showData();
-//            year = gui.askForYearToDisplay();
-//        }
+        int year = gui.askForYearToDisplay();
+
+        while (year != CANCEL) {
+
+            gui.getYearData(year);
+            gui.showData();
+            year = gui.askForYearToDisplay();
+        }
 
 
 
