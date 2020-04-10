@@ -19,6 +19,7 @@ public class WeatherGUI extends JPanel {
     private int minBarHeight;
     private double scaleFactor;
     private int YUnitSize;
+    private double XScaleFactor;
 
 
     public void paintComponent(Graphics g) {
@@ -126,13 +127,14 @@ public class WeatherGUI extends JPanel {
 
 //            int barHeight = (int) (value * scaleFactor);
             int barHeight = (int) (((double) value / (double) this.Y_UNIT) * this.YUnitSize);
+            int barWidth = (int) (this.BAR_WIDTH * this.XScaleFactor );
 
-            g.fillRect(nextBarPosition, pointZero.y - barHeight, this.BAR_WIDTH, barHeight);
+            g.fillRect(nextBarPosition, pointZero.y - barHeight, barWidth, barHeight);
 
             g.setColor(Color.BLACK);
-            g.drawString("" + month, nextBarPosition + this.BAR_WIDTH / 2, pointZero.y + this.YUnitSize / 2);
+            g.drawString("" + month, nextBarPosition + barWidth / 2, pointZero.y + this.YUnitSize / 2);
 
-            nextBarPosition += this.SPACE_BETWEEN_BARS + this.BAR_WIDTH;
+            nextBarPosition += this.SPACE_BETWEEN_BARS + barWidth;
             month++;
         }
     }
@@ -159,7 +161,8 @@ public class WeatherGUI extends JPanel {
     private void findScaleFactor(Dimension chartSize) {
         double maxHeight = chartSize.height * 0.9;
         this.scaleFactor = maxHeight / maxBarHeight;
-
+  //      this.XScaleFactor = ((double) chartSize.width / ((double) chartSize.width / ((double) this.BAR_WIDTH + this.SPACE_BETWEEN_BARS))) / (double) this.BAR_WIDTH ;
+        this.XScaleFactor = ((double) chartSize.width / 20) / this.BAR_WIDTH;
     }
 
 }
