@@ -127,7 +127,7 @@ public class WeatherGUI extends JPanel {
 
 //            int barHeight = (int) (value * scaleFactor);
             int barHeight = (int) (((double) value / (double) this.Y_UNIT) * this.YUnitSize);
-            int barWidth = (int) (BAR_WIDTH * XScaleFactor );
+            int barWidth = (int) (this.BAR_WIDTH * this.XScaleFactor );
 
             g.fillRect(nextBarPosition, pointZero.y - barHeight, barWidth, barHeight);
 
