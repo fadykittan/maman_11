@@ -66,11 +66,12 @@ public class WeatherGUI extends JPanel {
                 // check if the year in range, else loop again
                 if (WeatherData.isYearInRange(year)) {
                     return year;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter year in the range");
                 }
-                //todo else error print range year
             } catch (Exception e) {
                 System.out.println("failed when trying to convert this '" + input + "' into number");
-                //todo print only number note on screen " enter only number"
+                JOptionPane.showMessageDialog(null, "Please enter only numbers");
             }
 
         }
